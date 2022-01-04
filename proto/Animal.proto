@@ -1,0 +1,11 @@
+
+// ./proto/Animal.proto 
+// protobuffer framework will generate the classes which we'll access later
+
+syntax = "proto3";
+
+message Animal {
+  string species = 1;
+  string name = 2;
+  int32 age = 3;
+}
