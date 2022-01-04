@@ -4,3 +4,4 @@ protoc_installer/3.9.1@bincrafters/stable
 
 [generators]
 cmake
+cmake_paths

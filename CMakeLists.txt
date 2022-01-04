@@ -5,13 +5,15 @@ set(target ProtobufferExample)
 
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+# EDIT: after adding cmake_paths in conanfile.txt we can include conan_paths.cmake
+include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 conan_basic_setup()
  
 
-# we'll find the protobuffer dependency which was downloaded with conan
-find_package(Protobuf REQUIRED)
+# find_package(Protobuf REQUIRED)
+# EDIT: and we can get rid of the find_package command by including protoc-config.cmake
+include(${CONAN_PROTOC_INSTALLER_ROOT}/lib/cmake/protoc/protoc-config.cmake)
 
-# add the Animal.proto here to create the generic classes with protobuf_generate(...)
 add_executable(${target}
   ${PROJECT_SOURCE_DIR}/proto/Animal.proto
   ${PROJECT_SOURCE_DIR}/src/main.cpp
@@ -25,8 +27,6 @@ target_link_libraries(${target}
   ${CONAN_LIBS}
 )
 
-# the output directory for the proto compiler is our build directory
-# if we want to access the generic animal header we need to include this directory
 target_include_directories(${target} PUBLIC
   ${CMAKE_CURRENT_BINARY_DIR}
 )
