@@ -17,11 +17,3 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
-
-
-// cpp tomorrow night
-// cmake gruvbox dark
-
-// conan remote add bincrafters https://bincrafters.jfrog.io/artifactory/api/conan/public-conan
-// conan config set general.revisions_enabled=1
